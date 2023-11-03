@@ -4,12 +4,12 @@ import classes from './CartButton.module.css';
 
 const CartButton = (props) => {
   const dispatch = useDispatch();
-  const oepnCartHandler = () => { 
+  const openCartHandler = () => { 
     dispatch(cartActions.isOpen());
   }
 
   return (
-    <button className={classes.button} onClick={oepnCartHandler} >
+    <button className={classes.button} onClick={openCartHandler} >
       <span>🛒</span>
       <span className={classes.badge}>1</span>
     </button>

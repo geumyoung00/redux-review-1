@@ -4,7 +4,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: { isOpen: false },
   reducers: {
-    isOpen(state) { 
+    open(state) { 
       state.isOpen = !state.isOpen;
     }
   }
