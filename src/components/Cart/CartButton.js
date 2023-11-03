@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../../store/cartSlice';
+import { openCartActions } from '../../store/openCartSlice';
 import classes from './CartButton.module.css';
 
 const CartButton = (props) => {
   const dispatch = useDispatch();
   const openCartHandler = () => { 
-    dispatch(cartActions.open());
+    dispatch(openCartActions.open());
   }
 
   return (
