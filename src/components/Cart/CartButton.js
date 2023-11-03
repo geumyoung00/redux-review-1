@@ -5,7 +5,7 @@ import classes from './CartButton.module.css';
 const CartButton = (props) => {
   const dispatch = useDispatch();
   const openCartHandler = () => { 
-    dispatch(cartActions.isOpen());
+    dispatch(cartActions.open());
   }
 
   return (
