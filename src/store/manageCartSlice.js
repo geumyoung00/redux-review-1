@@ -13,16 +13,15 @@ const manageCartSlice = createSlice({
       const resultItem =  current(state.items).find((item) => item.id === actionItem.id);
       console.log('resultItem :', resultItem);
       
-      state.items.push(actionItem);
+      // state.items.push(actionItem);
+      if (resultItem) {
+        // 3 - 1) 있을 경우(true) count + 1 -> ++
+        resultItem.quantity ++
+      } else {
+        // 3-2) 없을 경우 items 배열에 추가하기. -> push
+        state.items.push(...actionItem, quantity:1);
+      }
       console.log(current(state.items));
-
-      // if (existingItem) {
-      //   // 3 - 1) 있을 경우(true) count + 1 -> ++
-      //   existingItem.count++;
-      // } else {
-      //   // 3-2) 없을 경우 items 배열에 추가하기. -> push
-      //   state.items.push(actionItem);
-      // }
 
     }, remove(state, action) { 
       //pseudo code 

@@ -5,15 +5,16 @@ import CartItem from './CartItem';
 
 const Cart = (props) => {
   const cartList = useSelector((state) => state.manageCart.items);
-  
+  const totalAmount = cartList.reduce((prev, current)=>prev+current, 0);
+    
+  console.log('cartList_title :', cartList[0].title);
+
   return (
     <Card className={classes.cart}>
       <h2>장바구니</h2>
       <ul>
-        {/* {cartList.map(() => {
-          <cartList item={}/>
-        })} */}
-        
+        {cartList.map((item) => <CartItem key={item} item={{title: item.title, quantity: item.quantity, total:totalAmount, price:item.price}} />
+        )}
         {/* <CartItem
           item={{ title: '🥝', quantity: 3, total: 3000, price: 1000 }}
         /> */}
