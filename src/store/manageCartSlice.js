@@ -10,19 +10,19 @@ const manageCartSlice = createSlice({
       const actionItem = action.payload;
       console.log('actionItem : ', actionItem)
       // 2) items 배열의 item과 비교해서 동일 항목의 존재 여부를 확인한다. -> find();
-      const existingItem = state.items.find((item) => item.id = actionItem.id);
-      console.log(existingItem);
-
-      if (existingItem) {
-        // 3 - 1) 있을 경우(true) count + 1 -> ++
-        existingItem.count++;
-      } else { 
-        // 3-2) 없을 경우 items 배열에 추가하기. -> push
-        state.items.push(actionItem);
-      }
-
-      console.log(state.items);
+      const resultItem = state.items.find((item) => item.id === actionItem.id);
+      console.log('resultItem :', resultItem);
       
+      state.items.push(actionItem);
+      console.log(state.items);
+
+      // if (existingItem) {
+      //   // 3 - 1) 있을 경우(true) count + 1 -> ++
+      //   existingItem.count++;
+      // } else { 
+      //   // 3-2) 없을 경우 items 배열에 추가하기. -> push
+      //   state.items.push(actionItem);
+      // }
     }, remove(state, action) { 
       //pseudo code 
       // 1) 선택한 item을 호출한다. -> playload로 가져오기 (id만으로 가능) !! 빼기는 카트에서만 가능
