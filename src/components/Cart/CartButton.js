@@ -7,7 +7,7 @@ const CartButton = (props) => {
   const openCartHandler = () => { 
     dispatch(openCartActions.open());
   }
-
+  
   return (
     <button className={classes.button} onClick={openCartHandler} >
       <span>🛒</span>
