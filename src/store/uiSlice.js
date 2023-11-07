@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const openCartSlice = createSlice({
+const uiSlice = createSlice({
   name: 'cart',
   initialState: { isOpen: false },
   reducers: {
     open(state) { 
       state.isOpen = !state.isOpen
-    }
+    },
+    
   }
 })
 
-export const openCartActions = openCartSlice.actions;
-export default openCartSlice.reducer;
+export const uiActions = uiSlice.actions;
+export default uiSlice.reducer;

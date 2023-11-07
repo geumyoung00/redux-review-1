@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { openCartActions } from '../../store/openCartSlice';
+import { uiActions } from '../../store/uiSlice';
 import classes from './CartButton.module.css';
 
 const CartButton = (props) => {
   const dispatch = useDispatch();
   const openCartHandler = () => { 
-    dispatch(openCartActions.open());
+    dispatch(uiActions.open());
   }
   
   // 1. product item이 담긴 배열 items를 가져온다.

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const manageCartSlice = createSlice({
+const cartSlice = createSlice({
   name: 'manageCart',
   initialState: { items:[] },
   reducers: {
@@ -34,10 +34,9 @@ const manageCartSlice = createSlice({
         // 3 - 1) item의 count가 = 1 이면 items에서 삭제 filter(!selectedItem);
         state.items = state.items.filter((item) => item.id !== resultItem.id);
        }
-      
     }
   }
 })
 
-export const manageCartActions = manageCartSlice.actions;
-export default manageCartSlice.reducer;
+export const cartActions = cartSlice.actions;
+export default cartSlice.reducer;
