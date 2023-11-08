@@ -1,10 +1,19 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
+import { uiActions } from '../../store/uiSlice';
 
 const Cart = (props) => {
   const cartList = useSelector((state) => state.manageCart.items);
+
+  const dispatch = useDispatch();
+  
+  // 상태값이 업데이트 될 때만 실행된다.
+  useEffect(() => {
+    dispatch(uiActions.notification());
+   }, [dispatch]);
 
   return (
     <Card className={classes.cart}>
