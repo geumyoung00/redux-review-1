@@ -11,29 +11,29 @@ const uiSlice = createSlice({
       state.isOpen = !state.isOpen
     },
     notification(state, action) { 
+      console.log(action);
       try {
         const applyApi = async () => { 
           const res = await fetch('https://cart-data-cc615-default-rtdb.firebaseio.com/cart.json', {
           method: 'PUT',
-          body: JSON.stringify(state.notification),
+          body: JSON.stringify(action.payload),
           });
+          console.log('res : ', res.ok);
+
           if (!res.ok) {throw new Error('Failed to send data')}
           console.log('res : ', res);
 
-          state.notification.status = 'success';
-          state.notification.title = 'success...';
-          state.notification.message = 'Compleate!'
+          // state.notification.status = {...state.notification, status : 'success!'}
+          // state.notification.title = 'success...';
+          // state.notification.message = 'Compleate!'
           
-          const cartItems = await res.json();
-          console.log('cartItems : ', cartItems);
+          const itemsState = await res.json();
+          console.log('itemsState : ', itemsState);
         }
         applyApi()
       } catch (error) {
          // error 발생
-        state.status = 'error';
-
-        state.title = 'error...';
-        state.message = error.message;
+        state.notification.status = 'error';
       }
     }
   }

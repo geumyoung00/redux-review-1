@@ -12,8 +12,8 @@ const Cart = (props) => {
   
   // 상태값이 업데이트 될 때만 실행된다.
   useEffect(() => {
-    dispatch(uiActions.notification());
-   }, [dispatch]);
+    dispatch(uiActions.notification(cartList));
+   }, [dispatch, cartList]);
 
   return (
     <Card className={classes.cart}>
