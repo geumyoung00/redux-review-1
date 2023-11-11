@@ -12,6 +12,7 @@ const CartItem = (props) => {
   const removeHandler = () => {
     dispatch(cartActions.remove(props.item.id));
   }
+  
   return (
     <li className={classes.item}>
       <header>

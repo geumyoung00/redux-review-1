@@ -9,6 +9,7 @@ const Notification = (props) => {
   if (props.status === 'success') {
     specialClasses = classes.success;
   }
+  console.log('props :', props);
 
   const cssClasses = `${classes.notification} ${specialClasses}`;
 
