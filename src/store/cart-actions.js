@@ -1,3 +1,4 @@
+import { cartActions } from './cartSlice';
 import { uiActions } from './uiSlice';
 
 // Thunk : 함수, 액션 생성자. 액션을 리턴해주는 함수를 리턴하는 함수.
@@ -55,4 +56,21 @@ export const updateCart = (cartList) => {
 };
 
 // GET : fetch DB data
-export const fetchCart = () => {};
+export const fetchCart = () => {
+  return async (dispatch) => {
+    // api 호출하기
+    const callApi = async () => {
+      const res = await fetch(
+        'https://cart-data-cc615-default-rtdb.firebaseio.com/cart.json',
+      );
+
+      const getData = await res.json();
+
+      return getData;
+    };
+
+    const items = await callApi();
+
+    dispatch(cartActions.fill(items));
+  };
+};

@@ -5,7 +5,10 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification/Notification';
-import { updateCart } from './store/cart-actions';
+import { updateCart, fetchCart } from './store/cart-actions';
+
+// 첫 로딩에는 notification이 보이지 않게 하기.
+let isFirstLoading = true;
 
 function App() {
   const isOpenCart = useSelector((state) => state.ui.isOpen);
@@ -17,8 +20,16 @@ function App() {
 
   // 상태값이 업데이트 될 때만 실행된다.
   useEffect(() => {
+    if (isFirstLoading) {
+      isFirstLoading = false;
+      return;
+    }
     dispatch(updateCart(cartList));
   }, [dispatch, cartList]);
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   return (
     <>
