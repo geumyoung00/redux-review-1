@@ -7,25 +7,21 @@ import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification/Notification';
 import { updateCart, fetchCart } from './store/cart-actions';
 
-// 첫 로딩에는 notification이 보이지 않게 하기.
-let isFirstLoading = true;
-
 function App() {
   const isOpenCart = useSelector((state) => state.ui.isOpen);
   const notification = useSelector((state) => state.ui.notification);
   const cartList = useSelector((state) => state.manageCart.items);
+  const isAddOrRemove = useSelector((state) => state.manageCart.isAddOrRemove);
 
   const dispatch = useDispatch();
-  console.log('notification :', notification);
 
   // 상태값이 업데이트 될 때만 실행된다.
   useEffect(() => {
-    if (isFirstLoading) {
-      isFirstLoading = false;
-      return;
-    }
+    console.log('isAddOrRemove : ', isAddOrRemove);
+    if (!isAddOrRemove) return;
+
     dispatch(updateCart(cartList));
-  }, [dispatch, cartList]);
+  }, [dispatch, cartList, isAddOrRemove]);
 
   useEffect(() => {
     dispatch(fetchCart());

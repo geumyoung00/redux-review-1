@@ -64,9 +64,9 @@ export const fetchCart = () => {
         'https://cart-data-cc615-default-rtdb.firebaseio.com/cart.json',
       );
 
-      const getData = await res.json();
+      const data = await res.json();
 
-      return getData;
+      return data;
     };
 
     const items = await callApi();

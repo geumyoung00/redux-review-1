@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
   name: 'manageCart',
-  initialState: { items: [] },
+  initialState: { items: [], isAddOrRemove: false },
   reducers: {
     add(state, action) {
       //pseudo code
@@ -18,6 +18,7 @@ const cartSlice = createSlice({
         // 3-2) 없을 경우 items 배열에 추가하기. -> push
         state.items.push({ ...actionItem, quantity: 1 });
       }
+      state.isAddOrRemove = true;
     },
     remove(state, action) {
       //pseudo code
@@ -35,9 +36,13 @@ const cartSlice = createSlice({
         // 3 - 1) item의 count가 = 1 이면 items에서 삭제 filter(!selectedItem);
         state.items = state.items.filter((item) => item.id !== resultItem.id);
       }
+      state.isAddOrRemove = true;
     },
     fill(state, action) {
       state.items = action.payload;
+    },
+    isAddOrRemove(state) {
+      state.isAddOrRemove = true;
     },
   },
 });
